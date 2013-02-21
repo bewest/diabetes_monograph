@@ -184,10 +184,10 @@ DMViewModels.factory('$dmViewModels', function ($dmSemantics, $dmPatient) {
             this.showDecisionSupport = false;
            
             this.checkedOptions = function () {
-                if (this.LabPanels) {
-                    var total = this.LabPanels.length;
+                if (this.labPanels) {
+                    var total = this.labPanels.length;
                     var sum = 0;
-                    _.each(this.LabPanels, function (panel) {
+                    _.each(this.labPanels, function (panel) {
                         if (panel.show)
                             sum += 1;
                     });

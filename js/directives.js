@@ -153,7 +153,7 @@ dmDirectives.directive('sectionEditor', [
 
                 return function(scope, element, attrs) {
                     templateLoader.then(function (templateText) {
-                        var compiled = ($compile('<div class="dropdown" style="margin-top:-29px; float:right; margin-right:4px"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="display:inline-block;width:80px;text-align:right;text-decoration:none;"><span style="color:#888;font-weight:800"> {{' + countermodel + '}} </span><img src="img/cog.png" style="border:0; margin-top:-2px"/></a>' + templateText.data + '</div>')(scope));
+                        var compiled = ($compile('<div class="dropdown" style="margin-top:-27px; float:right; margin-right:4px"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="display:inline-block;width:80px;text-align:right;text-decoration:none;"><span style="color:#888;font-weight:800"> {{' + countermodel + '}} </span><img src="img/cog.png" style="border:0; margin-top:-2px"/></a>' + templateText.data + '</div>')(scope));
 
                         tElement.replaceWith(compiled);
                       
@@ -219,11 +219,12 @@ dmDirectives.directive('sortSection', function () {
     return function (scope, element, attrs) {
         if (scope.$last === true) {
             element.ready(function () {
-                element.parents('.section-content').sortable({
+                element.parent('.section-content').sortable({
                     axis: 'y',
                     items: 'section',
                     handle: 'header',
-                    tolerance: 'pointer'
+                    tolerance: 'pointer',
+                    placeHolder: 'section_subheader'
                 });
             });
         }
@@ -250,7 +251,7 @@ dmDirectives.directive('sortLab', function () {
                 rowheight = $(this).height();
             }).css('cursor', 'pointer');
             element.ready(function () {
-                $('.sortable').sortable({
+                element.parent().sortable({
                     axis: 'y',
                     items: 'tr',
                     helper: fixHelper,

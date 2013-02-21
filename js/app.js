@@ -17,7 +17,7 @@ $dmApp.run(function ($rootScope) {
     $rootScope.sharedVars = {
         serviceBaseUrl: "http://smart.cingulata.us",
         servicePort: "8000",
-        version: 'V1.92',
+        version: 'V1.93',
         enableCart: false,
         verboseDisplay: false,
         prefsVisible: false

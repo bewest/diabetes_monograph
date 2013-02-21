@@ -17,21 +17,21 @@
 
         <div style="box-sizing: border-box; margin: auto;">
             <div class='span3 alpha col'>
-                <div section data-template="problem_section.html" />
-                <div section data-template="vitals_section.html" />
-                <div section data-template="otherinfo_section.html" />
+                <div class="sortable section" section data-template="problem_section.html" />
+                <div class="sortable section" section data-template="vitals_section.html" />
+                <div class="sortable" section data-template="otherinfo_section.html" />
             </div>
             <div class='span3 col'>
-                <div ng-include src="'a1cgraph_template.html'" onload="graph.plota1c()"></div>
-                <div ng-include src="'bpgraph_template.html'" onload="graph.plotbp()"></div>
-                <div section template="labresults_section.html" />
+                <div class="sortable section" ng-include src="'a1cgraph_template.html'" onload="graph.plota1c()"></div>
+                <div class="sortable section" ng-include src="'bpgraph_template.html'" onload="graph.plotbp()"></div>
+                <div class="sortable section" section template="labresults_section.html" />
 
             </div>
             <div class='span6 col'>
-                <div ng-include src="'ldlgraph_template.html'" onload="graph.plotldl()"></div>
-                <div section template="decisionsupport_section.html" />
-                <div section template="allergy_section.html" />
-                <div section template="medicine_section.html" />
+                <div class="sortable section" ng-include src="'ldlgraph_template.html'" onload="graph.plotldl()"></div>
+                <div class="sortable section" section template="decisionsupport_section.html" />
+                <div class="sortable section" section template="allergy_section.html" />
+                <div class="sortable section" section template="medicine_section.html" />
             </div>
             <div style="clear: both"></div>
         </div>
@@ -42,46 +42,55 @@
     // This will become a directive when we allow for saved layouts (V2.0 release?)
     $(function () {
      
-            $(".col").sortable({
+        var margin_bottom; // Fix for IE 8
+        //$('div.sortable').bind('mousedown', function () {
+        //    margin_bottom = $(this).css('margin-bottom');
+        //}).css('cursor', 'pointer');
+        $(".col").sortable({
+                items: 'div.sortable',
                 connectWith: ".col",
                 handle: 'header',
-                forcePlaceholderSize: true,
-                forceHelperSize: true,
+               
                 tolerance: 'pointer',
                 over: function (event, ui) {
                     ui.item.width(ui.placeholder.width());
-                }
+                   
+                },
+                start: function (event, ui) {
+                   
+                    ui.placeholder.css('margin-bottom', ui.item.css('margin-bottom'));
+                },
             });
     
-            $(".col,header,.section-content").disableSelection();
+            //$(".col,header,.section-content").disableSelection();
        
     });
 </script>
 
 <!-- The following will be replaced with directives -->
 <script type="text/ng-template" id="a1cgraph_template.html">
-    <section class="section">
+    <div class="section">
     <header class="section_header">
     A1C <span class="smaller" style="font-weight: normal">goal < 7%</span>
     </header>
     <div id='a1c_graph'></div>
-    </section>
+    </div>
 </script>
 <script type="text/ng-template" id="ldlgraph_template.html">
-    <section class="section">
+    <div class="section">
     <header class="section_header">
     LDL <span class="smaller" style="font-weight: normal">goal < 100 mg/dL</span>
     </header>
     <div id='ldl_graph'></div>
-    </section>
+    </div>
     
 </script>
 <script type="text/ng-template" id="bpgraph_template.html">
-    <section class="section">
+    <div class="section">
     <header class="section_header">
     BP <span class="smaller" style="font-weight: normal">goal < 130/80 mm/hg</span>
     </header>
     <div id='bp_graph'></div>
-    </section>
+    </div>
 </script>
 
