@@ -1,0 +1,37 @@
+﻿<style>
+    .resolved
+    {
+        color: green;
+    
+    }
+    .error
+    {
+        color: red;
+    }
+    .inactivate
+    {
+        color: #999999;
+        text-decoration: line-through;
+    }
+    
+</style>
+<section class="section"  ng-mouseleave="problemViewModel.cartUnselect()">
+    <header class="section_header">Problem List</header>
+    <div section-editor template="problem_editor.html" countermodel="problemViewModel.checkedOptions()"></div>
+    <div class="section-content">
+        <section sort-section ng-repeat="category in problemViewModel.categories" class="subpanel">
+            <header class="section_subheader" ng-ds-fade="category.show">{{category.label}}</header>
+            <ul class="unstyled" ng-ds-fade="category.show" >
+                <li ng-show="problemViewModel.hasFilteredProblems(category.filter)">No known problems</li>
+                <li  ng-repeat="problem in problemViewModel.problems | filter:{category:category.filter}"  ng-mousedown="problemMedSemanticViewModel.problemMouseDown(this.problem)" ng-mouseup="problemMedSemanticViewModel.problemMouseUp(this.problem)" ng-mouseover="problemMedSemanticViewModel.problemMouseOver(this.problem)" ng-mouseleave="problemMedSemanticViewModel.problemMouseLeave(this.problem)"  ng-style="problem.style">
+                    <div>
+                        <span cart-editor template="problem_cart_editor.html" ng-model="problem" enabled="sharedVars.enableCart"></span>
+                        <span ng-class="problem.status" ng-click="problemViewModel.setSelected(problem)" style="cursor:pointer">{{problem.problemName}}<span ng-show="problem.isDirty"> ({{problem.status}})</span></span>
+
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+    </div>
+</section>

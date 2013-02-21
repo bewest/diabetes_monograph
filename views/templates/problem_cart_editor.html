@@ -1,0 +1,15 @@
+﻿<ul class="dropdown-menu" style="font-weight:normal; width:600px; left:0px; ">
+   <li>
+        <button type="button" class="btn  btn-primary" style="width:80px;height:24px;padding-top:2px;" ng-click="problemViewModel.setStatus(model, 'resolved')">Resolve</button>
+        <button type="button" class="btn  btn-primary" style="width:80px;height:24px;padding-top:2px;" ng-click="problemViewModel.setStatus(model, 'inactivate')">Inactivate</button> 
+        <button type="button" class="btn  btn-primary" style="width:80px;height:24px;padding-top:2px;" ng-click="problemViewModel.setStatus(model, 'note')">Note</button> 
+        <button type="button" class="btn  btn-primary" style="width:80px;height:24px;padding-top:2px;" ng-click="problemViewModel.setStatus(model, 'affirm')">Affirm</button> 
+        <button type="button" class="btn  btn-primary" style="width:80px;height:24px;padding-top:2px;" ng-click="problemViewModel.setStatus(model, 'error')">Error</button> 
+       <button type="button" class="btn  btn-primary" style="width:80px;height:24px;padding-top:2px;" ng-click="problemViewModel.setStatus(model, 'clear')">Clear</button> 
+        <button type="button" disabled="disabled" class="btn  btn-primary" style="width:80px;height:24px;padding-top:2px;" ng-click="problemViewModel.setStatus(model, 'New')">New</button>
+       
+       <div style="margin-top:12px;padding:4px">
+       <textarea rows="4"  ng-model="model.note" style="width:570px" placeholder="Optional note area"/>
+           </div>
+   </li>
+</ul>

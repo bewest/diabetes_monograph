@@ -1,0 +1,22 @@
+{
+  "name": "DM V1.92",
+  "description": "A single page, specialized view for Diseases",
+  "author": "Dan Fritsch",
+  "id": "dm_monograph_1.92@apps.smartplatforms.org",
+  "version": "0.1.92",
+  "optimalBrowserEnvironments": ["desktop"],
+  "supportedBrowserEnvironments": ["desktop", "tablet"],
+
+  "mode": "ui",
+  "scope": "record",
+
+  "index": "http://dm.whistco.com/dm1.92/index.html",
+  "icon": "http://dm.whistco.com/dm1.92/img/icon.png",
+
+  "smart_version": "0.5",
+  "requires": {
+    "http://smartplatforms.org/terms#Demographics": {
+        "methods": ["GET"]
+    }
+  }
+}
